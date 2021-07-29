@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DOCKER_IMAGE_NAME = "adydinis/train-schedule"
-    }
     stages {
         stage('Build') {
             steps {
@@ -17,7 +14,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
+                    app = docker.build("adydinis/train-schedule")
                     app.inside {
                         sh 'echo Hello, World!'
                     }
